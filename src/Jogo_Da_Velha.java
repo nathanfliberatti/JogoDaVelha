@@ -65,14 +65,14 @@ public class Jogo_Da_Velha {
         
         int linha, coluna;
         
-        while(true) { // atribuir quando para o jogo, dps de uma vitoria ou empate
+        while(true) { 
             System.out.println("Linha: ");
             linha = input.nextInt();
             System.out.println("Coluna: ");
             coluna = input.nextInt();
             
             if (linha >= 0 && linha <= 2 && coluna >= 0 && coluna <= 2 && tab[linha][coluna] == ' ') {
-                preencherTabuleiro(linha, coluna);
+                tab[linha][coluna] = jogador;
                 break;
             } else {
                 System.out.println("Jogada invalida! Tente novamente.");
