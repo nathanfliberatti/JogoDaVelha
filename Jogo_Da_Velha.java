@@ -12,16 +12,40 @@ import java.util.Scanner;
  */
 public class Jogo_Da_Velha {
 
-    static char[][] tab = {
-            {' ', ' ', ' '},
-            {' ', ' ', ' '},
-            {' ', ' ', ' '}
-    };
+    public static char[][] tabuleiro() {
+            char[][] tab = {
+                {' ', ' ', ' '},
+                {' ', ' ', ' '},
+                {' ', ' ', ' '}
+            };
 
-    static char jogador = 'O';
-    static char maquina = 'X';
-    static int parada = 1;
-    static int contadorRodadas = 1;
+            return tab;
+    }
+
+    public static char jogador() {
+        char jogador = 'O';
+
+        return jogador;
+    }
+
+    public static char maquina() {
+        char maquina = 'X';
+
+        return maquina;
+    }
+
+    public static int parada() {
+        int parada = 1;
+
+        return parada;
+    }
+    
+    public static int contadorRodadas() {
+        int contadorRodadas = 1;
+
+        return contadorRodadas;
+
+    }
 
 
     public static int menu() {
@@ -38,7 +62,7 @@ public class Jogo_Da_Velha {
 
 
 
-    public static void imprimirTabuleiro() {
+    public static void imprimirTabuleiro(char[][] tab) {
         System.out.println("-------------");
         for (int i = 0; i < 3; i++) {
             System.out.print("| ");
@@ -50,7 +74,7 @@ public class Jogo_Da_Velha {
     }
 
 
-    public static int verificarJogador() {
+    public static int verificarJogador(char jogador) {
         if (jogador == 'O') {
             jogador = 'X';
         } else {
@@ -62,7 +86,7 @@ public class Jogo_Da_Velha {
 
 
 
-    public static void fazerJogada() {
+    public static void fazerJogada(char[][] tab, char jogador) {
         Scanner input = new Scanner(System.in);
 
         int linha, coluna;
@@ -92,7 +116,7 @@ public class Jogo_Da_Velha {
     }
 
 
-    public static void verificarVitoria() {
+    public static void verificarVitoria(char[][] tab, char jogador, int parada, int contadorRodadas) {
 
         //verificar horizontais
         if (contadorRodadas < 9) {
@@ -143,6 +167,7 @@ public class Jogo_Da_Velha {
         contadorRodadas++;
     }
 
+
     public static void maquinaPrimeiraJogada(){
 
         int validador = 0;
@@ -166,7 +191,7 @@ public class Jogo_Da_Velha {
         } while (validador == 0);
     }
 
-    public static void maquinaJogada(){
+    public static void maquinaJogada(char jogador, char maquina){
 
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
@@ -203,6 +228,14 @@ public class Jogo_Da_Velha {
 
 
     public static void main(String[] args) {
+        
+        char[][] tab = tabuleiro();
+        char jogador = jogador();
+        int parada = parada();
+        int contadorRodadas = contadorRodadas();
+
+        char maquina = maquina();
+        
         int opcao = 0;
 
         while(opcao != 3) {
@@ -210,24 +243,24 @@ public class Jogo_Da_Velha {
             switch(opcao) {
                 case 1:
                     do{
-                        imprimirTabuleiro();
-                        verificarJogador();
-                        fazerJogada();
-                        verificarVitoria();
+                        imprimirTabuleiro(tab);
+                        verificarJogador(jogador);
+                        fazerJogada(tab, jogador);
+                        verificarVitoria(tab, jogador, parada, contadorRodadas);
                     } while(parada != 0);
                     break;
 
                 case 2:
 
-                    imprimirTabuleiro();
-                    fazerJogada();
-                    imprimirTabuleiro();
+                    imprimirTabuleiro(tab);
+                    fazerJogada(tab, jogador);
+                    imprimirTabuleiro(tab);
                     maquinaPrimeiraJogada();
                     do {
-                        imprimirTabuleiro();
-                        fazerJogada();
+                        imprimirTabuleiro(tab);
+                        fazerJogada(tab, jogador);
                         maquinaJogada();
-                        verificarVitoria();]
+                        verificarVitoria();
 
                     } while(parada != 0);
                     break;
