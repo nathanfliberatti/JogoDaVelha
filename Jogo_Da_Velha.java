@@ -26,7 +26,7 @@ public class Jogo_Da_Velha {
         System.out.println("Marcos Boé");
         System.out.println("Nathan Liberatti");
 
-        System.out.println("AgredecimentoS a matéria Algoritimos e Programação que nos permitiu aprender tanto!\n\n");
+        System.out.println("Agredecimentos a matéria Algoritimos e Programação que nos permitiu aprender tanto!\n\n");
 
         return opcao;
     }
