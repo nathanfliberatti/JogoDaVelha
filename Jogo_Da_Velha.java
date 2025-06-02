@@ -1,15 +1,6 @@
 import java.util.Random;
 import java.util.Scanner;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
-
-/**
- *
- * @author Nathan
- */
 public class Jogo_Da_Velha {
 
     public static int menu() {
@@ -19,12 +10,25 @@ public class Jogo_Da_Velha {
         System.out.println("|*--- Escolha o modo---*|");
         System.out.println("|1  Jogador vs Jogador  |");
         System.out.println("|2  Jogador vs Maquina  |");
-        System.out.println("|3       Créditos       |");
+        System.out.println("|3       CrÃ©ditos       |");
         System.out.println("|4         Sair         |");
         System.out.println("-------------------------");
-        System.out.print  ("         Opção: ");
+        System.out.print  ("         OpÃ§Ã£o: ");
 
         return input.nextInt();
+    }
+
+    public static int creditos (int opcao) {
+
+        System.out.println("\n\nJogo feito por:");
+        System.out.println("Erick Yuji");
+        System.out.println("Gabriel Lima");
+        System.out.println("Marcos BoÃ©");
+        System.out.println("Nathan Liberatti");
+
+        System.out.println("AgredecimentoS a matÃ©ria Algoritimos e ProgramaÃ§Ã£o que nos permitiu aprender tanto!\n\n");
+
+        return opcao;
     }
 
     public static char[][] tabuleiro() {
@@ -36,6 +40,7 @@ public class Jogo_Da_Velha {
 
         return tab;
     }
+    
 
     public static void imprimirTabuleiro(char[][] tab) {
         System.out.println("-------------"); 
@@ -54,27 +59,27 @@ public class Jogo_Da_Velha {
 
     
     if (jogadorAtual == jogadorUm) {
-        System.out.println("É a vez do Jogador 1 (" + jogadorUm + ")!");
-    } else if (jogadorAtual == jogadorDois) { // Adicionando essa condição para deixar claro que é o Jogador 2
-        System.out.println("É a vez do Jogador 2 (" + jogadorDois + ")!");
+        System.out.println("Ã‰ a vez do Jogador 1 (" + jogadorUm + ")!");
+    } else if (jogadorAtual == jogadorDois) { // Adicionando essa condiï¿½ï¿½o para deixar claro que ï¿½ o Jogador 2
+        System.out.println("Ã‰ a vez do Jogador 2 (" + jogadorDois + ")!");
     }
-    // Para o modo Jogador vs Máquina, 'jogadorAtual' será o símbolo 'O',
+    // Para o modo Jogador vs Mï¿½quina, 'jogadorAtual' serï¿½ o sï¿½mbolo 'O',
 
 
     int linha, coluna;
 
     while(true) {
-        System.out.print("Linha (0-2): "); // Instrução mais clara para o usuário
+        System.out.print("Linha (0-2): "); // Instruï¿½ï¿½o mais clara para o usuï¿½rio
         linha = input.nextInt();
-        System.out.print("Coluna (0-2): "); // Instrução mais clara para o usuário
+        System.out.print("Coluna (0-2): "); // Instruï¿½ï¿½o mais clara para o usuï¿½rio
         coluna = input.nextInt();
 
-        // Verifica se a jogada é válida (dentro dos limites e em uma casa vazia)
+        // Verifica se a jogada ï¿½ vï¿½lida (dentro dos limites e em uma casa vazia)
         if (linha >= 0 && linha <= 2 && coluna >= 0 && coluna <= 2 && tab[linha][coluna] == ' ') {
-            tab[linha][coluna] = jogadorAtual; // O símbolo do jogador atual marca a casa
+            tab[linha][coluna] = jogadorAtual; // O sï¿½mbolo do jogador atual marca a casa
             break; 
         } else {
-            System.out.println("Jogada inválida! Tente novamente.");
+            System.out.println("Jogada invÃ¡lida! Tente novamente.");
             imprimirTabuleiro(tab); // Imprime o tabuleiro novamente para que o jogador veja e tente outra jogada
         }
     }
@@ -101,7 +106,7 @@ public class Jogo_Da_Velha {
 
     public static char [][] jogadaMaquina(char[][] tab, char jogador, char maquina){
 
-        // 1. LÓGICA PARA A MÁQUINA VENCER (ATACAR)
+        // 1. Lï¿½GICA PARA A Mï¿½QUINA VENCER (ATACAR)
         // Horizontal
         if (tab[0][0] == maquina && tab [0][1] == maquina && tab[0][2] == ' ') {
             tab[0][2] = maquina;
@@ -194,7 +199,7 @@ public class Jogo_Da_Velha {
         }
 
 
-        // 2. LÓGICA PARA A MÁQUINA SE DEFENDER (BLOQUEAR O JOGADOR)
+        // 2. Lï¿½GICA PARA A Mï¿½QUINA SE DEFENDER (BLOQUEAR O JOGADOR)
         // Horizontal
         else if (tab[0][0] == jogador && tab [0][1] == jogador && tab[0][2] == ' ') {
             tab[0][2] = maquina;
@@ -286,7 +291,7 @@ public class Jogo_Da_Velha {
             return tab;
         }
 
-        // 3. LÓGICA PARA JOGADA ESTRATÉGICA OU ALEATÓRIA
+        // 3. Lï¿½GICA PARA JOGADA ESTRATï¿½GICA OU ALEATï¿½RIA
         // Tenta o centro
         else if (tab[1][1] == ' ') {
             tab[1][1] = maquina;
@@ -331,11 +336,11 @@ public class Jogo_Da_Velha {
         // Verificar Horizontais
         for(int i = 0; i < 3; i++) {
             
-            if (tab[i][0] == tab[i][1] && tab[i][0] == tab[i][2] && tab[i][0] != ' ') { // Varre todas as verticais e valida se os todos os simbolos são iguais
+            if (tab[i][0] == tab[i][1] && tab[i][0] == tab[i][2] && tab[i][0] != ' ') { // Varre todas as verticais e valida se os todos os simbolos sï¿½o iguais
                 System.out.println("\n\n\n\n\n\n"); 
-                imprimirTabuleiro(tab);                                                 /*Após validar que o campo do jogo está totalmente preenchido 
-                                                                                         com os mesmos símbolos, valida qual om símbolo para atribuir vitória.*/
-                                                                                         // Jogador: X - Máquina: O  
+                imprimirTabuleiro(tab);                                                 /*Apï¿½s validar que o campo do jogo estï¿½ totalmente preenchido 
+                                                                                         com os mesmos sï¿½mbolos, valida qual om sï¿½mbolo para atribuir vitï¿½ria.*/
+                                                                                         // Jogador: X - Mï¿½quina: O  
                                                                                          // Jogador1: x - Jogador2: O               
                 if (opcao == 1 && tab[i][0] == 'O'){
                     System.out.println("Jogador 2 ('O') venceu!");                      //
@@ -344,10 +349,10 @@ public class Jogo_Da_Velha {
                     System.out.println("Jogador 1 ('X') venceu!");
                 }else 
                 if(opcao == 2 && tab[i][0] == 'O'){
-                    System.out.println("A Máquina venceu!");
+                    System.out.println("A Mï¿½quina venceu!");
                 }else 
                 if(opcao == 2 && tab[i][0] == 'X'){
-                    System.out.println("Você venceu a Máquina, jogador!");
+                    System.out.println("Vocï¿½ venceu a Mï¿½quina, jogador!");
                 }
                 return 1; // 1 para indicar que o jogo terminou na Main
             }
@@ -367,10 +372,10 @@ public class Jogo_Da_Velha {
                     System.out.println("Jogador 1 ('X') venceu!");
                 }else 
                 if(opcao == 2 && tab[0][j] == 'O'){
-                    System.out.println("A Máquina venceu!");
+                    System.out.println("A Mï¿½quina venceu!");
                 }else 
                 if(opcao == 2 && tab[0][j] == 'X'){
-                    System.out.println("Você venceu a Máquina, jogador!");
+                    System.out.println("Vocï¿½ venceu a Mï¿½quina, jogador!");
                 }
                 
                 return 1; 
@@ -390,15 +395,15 @@ public class Jogo_Da_Velha {
                     System.out.println("Jogador 1 ('X') venceu!");
                 }else 
                 if(opcao == 2 && tab[0][0] == 'O'){
-                    System.out.println("A Máquina venceu!");
+                    System.out.println("A Mï¿½quina venceu!");
                 }else 
                 if(opcao == 2 && tab[0][0] == 'X'){
-                    System.out.println("Você venceu a Máquina, jogador!");
+                    System.out.println("Vocï¿½ venceu a Mï¿½quina, jogador!");
                 }
                 return 1;
             }
 
-            // Diagonal secundária (canto superior direito para inferior esquerdo)
+            // Diagonal secundï¿½ria (canto superior direito para inferior esquerdo)
             if (tab[0][2] == tab[1][1] && tab[0][2] == tab[2][0] && tab[0][2] != ' ') {
                 System.out.println("\n\n\n\n\n\n");
                 imprimirTabuleiro(tab);
@@ -410,15 +415,15 @@ public class Jogo_Da_Velha {
                     System.out.println("Jogador 1 ('X') venceu!");
                 }else 
                 if(opcao == 2 && tab[0][2] == 'O'){
-                    System.out.println("A Máquina venceu!");
+                    System.out.println("A Mï¿½quina venceu!");
                 }else 
                 if(opcao == 2 && tab[0][2] == 'X'){
-                    System.out.println("Você venceu a Máquina, jogador!");
+                    System.out.println("Vocï¿½ venceu a Mï¿½quina, jogador!");
                 }
                 return 1;
             }
 
-            // 4. Verificar Empate (somente se nenhuma vitória foi detectada até agora)
+            // 4. Verificar Empate (somente se nenhuma vitï¿½ria foi detectada atï¿½ agora)
             int casasPreenchidas = 0;
             for(int l = 0; l < 3; l++){
                 for(int c = 0; c < 3; c++){
@@ -428,14 +433,14 @@ public class Jogo_Da_Velha {
                 }
             }
 
-            if (casasPreenchidas == 9) { // Se todas as 9 casas estão preenchidas e ninguém ganhou
+            if (casasPreenchidas == 9) { // Se todas as 9 casas estï¿½o preenchidas e ninguï¿½m ganhou
                 System.out.println("\n\n\n\n\n\n");
                 imprimirTabuleiro(tab);
                 System.out.println("Deu velha!\n");
                 return 1; // Jogo terminou em empate
             }
 
-            //Se nenhuma vitória ou empate foi detectado, o jogo continua
+            //Se nenhuma vitï¿½ria ou empate foi detectado, o jogo continua
             return 0; 
         }
         
@@ -462,10 +467,10 @@ public class Jogo_Da_Velha {
                     do {
                         imprimirTabuleiro(tab);
 
-                        // Chama jogada passando o jogador atual e os símbolos fixos dos jogadores 1 e 2
+                        // Chama jogada passando o jogador atual e os sï¿½mbolos fixos dos jogadores 1 e 2
                         jogada(tab, jogadorAtual, jogador1, jogador2);
 
-                        // Verifica se houve vitória, derrota ou empate
+                        // Verifica se houve vitï¿½ria, derrota ou empate
                         parada = verificarVitoria(tab, jogadorAtual,opcao); 
 
                         if (parada == 0) { 
@@ -475,7 +480,7 @@ public class Jogo_Da_Velha {
                         } else {
                             jogadorAtual = jogador1;
                         }
-                        System.out.println("Vez de " + jogadorAtual); // Informa o próximo jogador
+                        System.out.println("Vez de " + jogadorAtual); // Informa o prï¿½ximo jogador
                         }
 
                     } while (parada == 0);
@@ -497,7 +502,7 @@ public class Jogo_Da_Velha {
                     break;
 
                 case 3:
-                    //creditos
+                    creditos(opcao);
                     break;
 
                 case 4: 
